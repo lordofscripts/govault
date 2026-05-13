@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Photos",
+    "encrypted": false,
+    "tags": "all,photos",
+    "children": [
+      {
+        "name": "Branding",
+        "encrypted": false,
+        "tags": "logo, press, social",
+        "children": [
+          {"name": "Logos", "encrypted": false, "tags": ""}
+        ]
+      },
+      {
+        "name": "Camera",
+        "encrypted": false,
+        "tags": "webcam",
+        "children": null
+      },
+      {
+        "name": "Events & Occasions", 
+        "encrypted": false, 
+        "tags": "payhip,business,income"
+      },
+      {
+        "name": "Genealogy",
+        "encrypted": false,
+        "tags": "family, hobby, genealogy",
+        "children": null
+      },
+      {
+        "name": "Icons",
+        "encrypted": false,
+        "tags": "icons, graphics",
+        "children": null
+      },
+      {
+        "name": "Legal",
+        "encrypted": false,
+        "tags": "legal, documents",
+        "children": null
+      },
+      {
+        "name": "People",
+        "encrypted": false,
+        "tags": "people,portraits",
+        "children": [
+          {"name": "Family", "encrypted": false, "tags": "family,private"}
+        ]
+      },
+      {
+        "name": "Property",
+        "encrypted": false,
+        "tags": "ownership, property, home, house",
+        "children": null
+      },
+      {
+        "name": "Screenshots",
+        "encrypted": false,
+        "tags": "screenshots",
+        "children": null
+      },
+      {
+        "name": "Sites",
+        "encrypted": false,
+        "tags": "websites, projects",
+        "children": [
+          {"name": "PayHip", "encrypted": false, "tags": "payhip,business,income"}
+        ]
+      },
+      {
+        "name": "Templates",
+        "encrypted": false,
+        "tags": "template",
+        "children": null
+      },
+      {
+        "name": "Unclassified",
+        "encrypted": false,
+        "tags": "unclassified",
+        "children": null
+      },
+      {
+        "name": "Wallpapers",
+        "encrypted": false,
+        "tags": "wallpapers",
+        "children": [
+          {"name": "Aviation", "encrypted": false, "tags": "aviation,planes,aircraft,cockpit"},
+          {"name": "Misc", "encrypted": false, "tags": "misc"},
+          {"name": "Nature", "encrypted": false, "tags": "nature"},
+          {"name": "Writing", "encrypted": false, "tags": "writing,mood"}
+        ]
+      },
+      {
+        "name": "Writing",
+        "encrypted": false,
+        "tags": "hobby, writing, novel",
+        "children": [
+          {"name": "Memoirs", "encrypted": false, "tags": "memoirs"}
+        ]
+      },
+      {
+        "name": "XVault",
+        "encrypted": true,
+        "tags": "private,secret",
+        "children": [
+          {"name": "BookCovers", "encrypted": true, "tags": "writing,covers"},
+          {"name": "FlightSim", "encrypted": true, "tags": "games,gaming"}
+        ]
+      }
+    ]
+  }
+]
+

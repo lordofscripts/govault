@@ -1,0 +1,147 @@
+[
+  {
+    "name": "Documents",
+    "encrypted": false,
+    "tags": "all,document",
+    "children": [
+      {
+        "name": "Admin",
+        "encrypted": false,
+        "tags": "admin, cheat-sheets",
+        "children": [
+          {"name": "Lisbon", "encrypted": false, "tags": "laptop"}
+        ]
+      },
+      {
+        "name": "Archive",
+        "encrypted": false,
+        "tags": "archive",
+        "children": null
+      },
+      {
+        "name": "Admin",
+        "encrypted": false,
+        "tags": "admin, cheat-sheets",
+        "children": [
+          {"name": "Lisbon", "encrypted": false, "tags": "laptop"}
+        ]
+      },
+      {
+        "name": "Development",
+        "encrypted": false,
+        "tags": "develop",
+        "children": null
+      },
+      {
+        "name": "Financial & Taxes",
+        "encrypted": false,
+        "tags": "develop",
+        "children": [
+          {"name": "NL", "encrypted": false, "tags": "NLD, NL, Nederland, Netherlands"},
+          {"name": "US", "encrypted": false, "tags": "USA, US"},
+          {"name": "PA", "encrypted": false, "tags": "PAN, PA, Panama"}
+        ]
+      },
+      {
+        "name": "Development",
+        "encrypted": false,
+        "tags": "develop",
+        "children": null
+      },
+      {
+        "name": "Financial & Taxes",
+        "encrypted": false,
+        "tags": "develop",
+        "children": null
+      },
+      {
+        "name": "Medical",
+        "encrypted": false,
+        "tags": "health, medical, laboratory",
+        "children": null
+      },
+      {
+        "name": "Hobbies",
+        "encrypted": false,
+        "tags": "hobby",
+        "children": null
+      },
+      {
+        "name": "Property",
+        "encrypted": false,
+        "tags": "property, home, land",
+        "children": [
+          {"name": "Utility-Bills", "encrypted": false, "tags": "bills, utility"}
+        ]
+      },
+      {
+        "name": "Insurance",
+        "encrypted": false,
+        "tags": "insurance,car,health",
+        "children": null
+      },      
+      {
+        "name": "Jubilacion",
+        "encrypted": false,
+        "tags": "pension,jubilacion",
+        "children": null
+      },      
+      {
+        "name": "Legal",
+        "encrypted": false,
+        "tags": "legal",
+        "children": [
+          {"name": "Business", "encrypted": false, "tags": "business,coralys"},
+          {"name": "Certificates", "encrypted": false, "tags": "certificates"},
+          {"name": "Citizenship", "encrypted": false, "tags": "foreign,citizenship"}
+        ]
+      },
+      {
+        "name": "Library",
+        "encrypted": false,
+        "tags": "library,reference",
+        "children": null
+      },
+      {
+        "name": "People",
+        "encrypted": false,
+        "tags": "people,me",
+        "children": null
+      },
+      {
+        "name": "Projects & Ideas",
+        "encrypted": false,
+        "tags": "projects, ideas",
+        "children": null
+      },      
+      {
+        "name": "Reports",
+        "encrypted": false,
+        "tags": "reports",
+        "children": null
+      },      
+      {
+        "name": "Templates",
+        "encrypted": false,
+        "tags": "templates, plantillas",
+        "children": null
+      },
+      {
+        "name": "Travel",
+        "encrypted": false,
+        "tags": "travel, holiday, trip",
+        "children": null
+      },
+      {
+        "name": "Vehicle",
+        "encrypted": false,
+        "tags": "vehicle, car",
+        "children": [
+          {"name": "Maintenance", "encrypted": false, "tags": "maintenance"},
+          {"name": "Registration", "encrypted": false, "tags": "property, registration, dmv"}
+        ]
+      }
+    ]
+  }
+]
+
