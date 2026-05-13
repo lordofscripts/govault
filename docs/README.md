@@ -62,7 +62,7 @@ merge them into one do maintain both Pictures and Documents with a single specif
 Ensure you [validate your JSON](https://jsonlint.com/) `tree.json` file before using it with
 `govault`.
 
-> $govault {COMMAND} [OPTIONS]
+> `$govault {COMMAND} [OPTIONS]`
 
 Where `COMMAND` can be any of `-create`, `-update`, `-tags`, `-query` or `-help`.
 
@@ -75,21 +75,21 @@ Options depend on the command but are any of:
 
 To Create the entire directory hierarchy (all options above apply):
 
-> $govault -create
+> `$govault -create`
 
 To Update the directory hierarchy and folder metadata after you update your JSON file
 (all options from above apply, *except* `-overwrite` which is TRUE):
 
-> $govault -update
+> `$govault -update`
 
 To List all the *tags* you have mentioned in your JSON file and show you a tag cloud:
 
-> $govault -tags
+> `$govault -tags`
 
 To Query your JSON file to suggest you where to store or find a file given one or more
 tags:
 
-> $govault -query "TAG(S)"
+> `$govault -query "TAG(S)"`
 
 For the `-query` you can specify a single tag or multiple comma-separated tags.
 
