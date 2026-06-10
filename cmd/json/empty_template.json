@@ -1,0 +1,59 @@
+{
+    "tokens": [
+        {
+            "token": "%C",
+            "description": "Country",
+            "values": [
+                { "key": "NL", "value": "Nederland"},
+                { "key": "NLD", "value": "Nederland"},
+                { "key": "US", "value": "United States of America"},
+                { "key": "USA", "value": "United States of America"}
+            ]
+        },
+        {            
+            "token": "%P",
+            "description": "People",
+            "values": [
+                { "key": "JDF", "value": "Jane Doe Flutterhuis"}
+            ]
+        },
+        {
+            "token": "%I",
+            "description": "Institutions",
+            "values": [
+                { "key": "BDI", "value": "NL::Belastingsdienst"},
+                { "key": "SSA", "value": "US::Social Security Administration"},
+                { "key": "TAX", "value": "Taxes & Death"},
+                { "key": "CAR", "value": "Car/Vehicle"},
+                { "key": "BANK", "value": "Banking"},
+                { "key": "FINA", "value": "Finance"},
+                { "key": "SEGU", "value": "Insurance"},
+                { "key": "TRAN", "value": "Transport"}
+            ]
+        },
+        {
+            "token": "%M",
+            "description": "Medical Specialists",
+            "values": [
+                { "key": "DIAG", "value": "Diagnostic or Reference"},
+                { "key": "RX", "value": "Medical Prescription"},
+                { "key": "CARD", "value": "Cardiology"},
+                { "key": "ENDO", "value": "Endocrinology"},
+                { "key": "FERT", "value": "Fertility"},
+                { "key": "GENE", "value": "Genetics"},
+                { "key": "GYNE", "value": "Gynecology"},
+                { "key": "HEMA", "value": "Hematology"},
+                { "key": "INMU", "value": "Inmunology"},
+                { "key": "QUIM", "value": "Quimica / Chemistry"},
+                { "key": "PATO", "value": "Pathology"},
+                { "key": "UROL", "value": "Urology"},
+                { "key": "OFTA", "value": "Ophtalmology"}
+            ]
+        }
+    ],
+    "rules": [
+        { "id": 1, "token": "%RFincaDGI", "title": "DGI Fincas", "regex": "^F\\d{6,8}(?:-\\d{4})?$"},
+        { "id": 2, "token": "%RCarFleet", "title": "Your Cars", "list": "BMW|RAV4"},
+        { "id": 3, "token": "%RCrypto", "title": "Crypto Coins", "list": "BTC|ETH"}
+    ]
+}

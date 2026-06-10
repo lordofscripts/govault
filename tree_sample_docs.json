@@ -19,14 +19,6 @@
         "children": null
       },
       {
-        "name": "Admin",
-        "encrypted": false,
-        "tags": "admin, cheat-sheets",
-        "children": [
-          {"name": "Lisbon", "encrypted": false, "tags": "laptop"}
-        ]
-      },
-      {
         "name": "Development",
         "encrypted": false,
         "tags": "develop",
@@ -36,6 +28,7 @@
         "name": "Financial & Taxes",
         "encrypted": false,
         "tags": "develop",
+        "template": "%C_%P_%D_%I_*",
         "children": [
           {"name": "NL", "encrypted": false, "tags": "NLD, NL, Nederland, Netherlands"},
           {"name": "US", "encrypted": false, "tags": "USA, US"},
@@ -43,21 +36,10 @@
         ]
       },
       {
-        "name": "Development",
-        "encrypted": false,
-        "tags": "develop",
-        "children": null
-      },
-      {
-        "name": "Financial & Taxes",
-        "encrypted": false,
-        "tags": "develop",
-        "children": null
-      },
-      {
         "name": "Medical",
         "encrypted": false,
         "tags": "health, medical, laboratory",
+        "template": "%P_%D_%M_%I_*",
         "children": null
       },
       {
@@ -67,17 +49,18 @@
         "children": null
       },
       {
-        "name": "Property",
+        "name": "Housing & Property",
         "encrypted": false,
         "tags": "property, home, land",
         "children": [
-          {"name": "Utility-Bills", "encrypted": false, "tags": "bills, utility"}
+          {"name": "Utility-Bills", "encrypted": false, "tags": "bills, utility", "template": "%I_%D_*"}
         ]
       },
       {
         "name": "Insurance",
         "encrypted": false,
         "tags": "insurance,car,health",
+        "template": "%P_%D_%I_*",
         "children": null
       },      
       {
@@ -136,6 +119,7 @@
         "name": "Vehicle",
         "encrypted": false,
         "tags": "vehicle, car",
+        "template": "%V_%D_*",
         "children": [
           {"name": "Maintenance", "encrypted": false, "tags": "maintenance"},
           {"name": "Registration", "encrypted": false, "tags": "property, registration, dmv"}
