@@ -49,11 +49,35 @@
                 { "key": "UROL", "value": "Urology"},
                 { "key": "OFTA", "value": "Ophtalmology"}
             ]
+        },
+        {
+            "token": "%A",
+            "description": "Image File Prefix",
+            "values": [
+                { "key": "IMG", "value": "Camera photos"},
+                { "key": "PIC", "value": "Drawings"},
+                { "key": "SCN", "value": "Digital Scans"},
+                { "key": "DSCF", "value": "Old camera photos"},
+                { "key": "IMGX", "value": "AI Generated"}
+            ]
+        },
+        {
+            "token": "%X",
+            "description": "Image File Extensions",
+            "values": [
+                { "key": "jpg", "value": "JPEG"},
+                { "key": "png", "value": "PNG"},
+                { "key": "gif", "value": "GIF"},
+                { "key": "tiff", "value": "TIFF"},
+                { "key": "pdn", "value": "Paint.NET"},
+                { "key": "xcf", "value": "Gimp"}
+            ]
         }
     ],
     "rules": [
-        { "id": 1, "token": "%RFincaDGI", "title": "DGI Fincas", "regex": "^F\\d{6,8}(?:-\\d{4})?$"},
-        { "id": 2, "token": "%RCarFleet", "title": "Your Cars", "list": "BMW|RAV4"},
-        { "id": 3, "token": "%RCrypto", "title": "Crypto Coins", "list": "BTC|ETH"}
+        { "id": 1, "token": "$R1", "title": "DGI Fincas", "regex": "^F\\d{6,8}(?:-\\d{4})?$"},
+        { "id": 2, "token": "$R2", "title": "Your Cars", "list": "BMW|RAV4"},
+        { "id": 3, "token": "$R3", "title": "Crypto Coins", "list": "BTC|ETH"},
+        { "id": 4, "token": "$R4", "title": "Image File Ext.", "list": "jpg|png|gif|tiff|pdn|xcf"}
     ]
 }
