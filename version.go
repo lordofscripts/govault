@@ -18,7 +18,7 @@ import (
  *							G l o b a l s
  *-----------------------------------------------------------------*/
 const (
-	MANUAL_VERSION string = "1.0" // in case vcsVersion not injected during link phase
+	MANUAL_VERSION string = "1.1.0" // in case vcsVersion not injected during link phase
 
 	// Useful Unicode Characters
 	CHR_COPYRIGHT       = '\u00a9'      // ©
@@ -36,7 +36,7 @@ const (
 	CHR_SKULL           = '\u2620' // ☠
 
 	CO1 = "odlamirG omidiD 6202-5202)C("
-	CO2 = "stpircS fO droL 6262-5202)C("
+	CO2 = "stpircS fO droL 6202-5202)C("
 	CO3 = "gnitirwnitsol"
 
 	// Change these values accordingly

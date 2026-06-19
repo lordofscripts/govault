@@ -1,3 +1,13 @@
+github.com/lordofscripts/goapp v1.3.0 h1:zwd4AGmtRyUWKhsfqtMEMH7qOZQ5w7Z3Utqbd/iqKJI=
+github.com/lordofscripts/goapp v1.3.0/go.mod h1:43DHfRgNSdzTOFKfF1PnNVa3BGsp69W/EHs2Dnjev2o=
+github.com/lordofscripts/goapp v1.3.1 h1:iXVYwMnaR8vnEaQuo3nmkb11oD47Or0usxdIPeq5ds4=
+github.com/lordofscripts/goapp v1.3.1/go.mod h1:Hxl+fTLzQ5Q7NkDfWNObwKCe+pkPs47UDj64vv1Q4gY=
+github.com/lordofscripts/goapp v1.3.2 h1:J1B5T9xVBM1PztmMhh9qZCx5Uwi/PHFscO7nk9NgZbY=
+github.com/lordofscripts/goapp v1.3.2/go.mod h1:Hxl+fTLzQ5Q7NkDfWNObwKCe+pkPs47UDj64vv1Q4gY=
+github.com/lordofscripts/goapp v1.3.3 h1:iWVc4C0ylRKHCsuvZAOcSbQuKPB3QiEU5UsUdnxy9gk=
+github.com/lordofscripts/goapp v1.3.3/go.mod h1:Hxl+fTLzQ5Q7NkDfWNObwKCe+pkPs47UDj64vv1Q4gY=
+github.com/lordofscripts/goapp v1.4.0 h1:TNzxQZgUE9KEX8U3BpXmoCBICO77/Y7pu/3tAWsvSM8=
+github.com/lordofscripts/goapp v1.4.0/go.mod h1:Hxl+fTLzQ5Q7NkDfWNObwKCe+pkPs47UDj64vv1Q4gY=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
