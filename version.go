@@ -3,7 +3,8 @@
  *				  Copyright (C)2026 Dídimo Grimaldo T.
  *							 go-vault
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- * A tagged Picture & Document Vault maker.
+ * A tagged Picture & Document Vault maker with SQL-like query
+ * capabilities.
  *-----------------------------------------------------------------*/
 package vault
 
@@ -11,15 +12,22 @@ import (
 	"fmt"
 	"runtime"
 	"strings"
+
+	"github.com/lordofscripts/goapp/app"
 	//_ "embed"
 )
 
 /* ----------------------------------------------------------------
  *							G l o b a l s
  *-----------------------------------------------------------------*/
-const (
-	MANUAL_VERSION string = "1.1.0" // in case vcsVersion not injected during link phase
 
+const (
+	_NAME          string = "goVault"
+	_DESC          string = "File vault maker with SQL-like query capability"
+	MANUAL_VERSION string = "1.1.0"
+)
+
+const (
 	// Useful Unicode Characters
 	CHR_COPYRIGHT       = '\u00a9'      // ©
 	CHR_REGISTERED      = '\u00ae'      // ®
@@ -38,109 +46,11 @@ const (
 	CO1 = "odlamirG omidiD 6202-5202)C("
 	CO2 = "stpircS fO droL 6202-5202)C("
 	CO3 = "gnitirwnitsol"
-
-	// Change these values accordingly
-	NAME string = "Go Vault Maker"
-	DESC string = "A tagged Picture & Document Vault maker"
-	// don't change
-	statusAlpha    status = "Alpha"
-	statusBeta     status = "Beta"
-	statusRC       status = "RC" // Release Candidate
-	statusReleased status = ""
 )
 
 var (
-	vcsVersion  string // automatically injected with linker
-	vcsCommit   string
-	vcsDate     string
-	vcsBuildNum string
-	//NOT USEDgo:embed version.txt
+	ModuleVersion app.PackageVersion = app.NewReleaseCandidateVersion(_NAME, _DESC, MANUAL_VERSION, 1)
 )
-
-var (
-	// NOTE: Change these values accordingly
-	appVersion version = version{NAME, MANUAL_VERSION, statusReleased, 0}
-
-	// DO NOT CHANGE THESE!
-	Version      string = appVersion.String()
-	ShortVersion string = appVersion.Short()
-)
-
-/* ----------------------------------------------------------------
- *							T y p e s
- *-----------------------------------------------------------------*/
-type status = string
-
-type version struct {
-	n  string // name
-	v  string // version tag
-	s  status // status
-	sv int    // Alpha/Beta/RC-### sequence
-}
-
-/* ----------------------------------------------------------------
- *							M e t h o d s
- *-----------------------------------------------------------------*/
-
-func BuildMeta() string {
-	ver := vcsVersion
-	if len(vcsVersion) == 0 {
-		ver = "v" + MANUAL_VERSION
-	}
-	return fmt.Sprintf("\t\t%s-%s %s", ver, vcsBuildNum, vcsDate)
-}
-
-func (v version) BuildInfo() string {
-	return fmt.Sprintf("Build #%s (%s)", vcsBuildNum, vcsCommit)
-}
-
-func (v version) Short() string {
-	var ver string
-
-	if len(vcsVersion) != 0 {
-		v.v = vcsVersion
-	}
-	var buildInfo string = ""
-	if vcsBuildNum != "" {
-		buildInfo = fmt.Sprintf(" build #%s", vcsBuildNum)
-	}
-
-	switch v.s {
-	case statusAlpha:
-		fallthrough
-	case statusBeta:
-		fallthrough
-	case statusRC:
-		ver = fmt.Sprintf("v%s-%s-%d%s", v.v, v.s, v.sv, buildInfo)
-	default:
-		ver = fmt.Sprintf("v%s %s", v.v, buildInfo)
-	}
-	return ver
-}
-
-func (v version) String() string {
-	var ver string
-
-	if len(vcsVersion) != 0 {
-		v.v = vcsVersion
-	}
-	var buildInfo string = ""
-	if vcsBuildNum != "" {
-		buildInfo = fmt.Sprintf(" build #%s", vcsBuildNum)
-	}
-
-	switch v.s {
-	case statusAlpha:
-		fallthrough
-	case statusBeta:
-		fallthrough
-	case statusRC:
-		ver = fmt.Sprintf("%s v%s-%s-%d%s", v.n, v.v, v.s, v.sv, buildInfo)
-	default:
-		ver = fmt.Sprintf("%s v%s %s", v.n, v.v, buildInfo)
-	}
-	return ver
-}
 
 /* ----------------------------------------------------------------
  *							F u n c t i o n s
@@ -180,7 +90,7 @@ func BuyMeCoffee(coffee4 ...string) {
 
 func Copyright(owner string, withLogo bool) {
 	//fmt.Printf("\t\u2720 %s %s \u269d\n", Version, Reverse(owner))
-	fmt.Printf("\t%c %s %s %c\n", CHR_TRIDENT, Version, Reverse(owner), CHR_TRIDENT)
+	fmt.Printf("\t%c %s %s %c\n", CHR_TRIDENT, ModuleVersion, Reverse(owner), CHR_TRIDENT)
 	fmt.Println("\t\t\t\t", Logo())
 }
 

@@ -24,9 +24,8 @@ import (
  *-----------------------------------------------------------------*/
 
 var (
-	Version      app.PackageVersion = app.NewReleaseVersion(vault.NAME, vault.DESC, vault.MANUAL_VERSION)
-	OptVerbose   bool               = false
-	OptRecursive bool               = false
+	OptVerbose   bool = false
+	OptRecursive bool = false
 )
 
 var (
@@ -43,7 +42,7 @@ func Help() {
 	flag.PrintDefaults()
 	fmt.Println()
 
-	Version.BuyMeCoffee(vault.Reverse(vault.CO2))
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO2))
 }
 
 /* ----------------------------------------------------------------
@@ -128,7 +127,7 @@ func main() {
 	helpCmd.Usage = Help
 
 	// II. Application Prelude
-	Version.Copyright(vault.Reverse(vault.CO1), vault.CHR_TRIDENT)
+	vault.ModuleVersion.Copyright(vault.Reverse(vault.CO1), vault.CHR_TRIDENT)
 	fmt.Println()
 
 	if err := subCom.Parse(); err != nil {
@@ -252,5 +251,5 @@ func main() {
 	}
 
 	fmt.Println()
-	Version.BuyMeCoffee(vault.Reverse(vault.CO3))
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO3))
 }

@@ -48,7 +48,7 @@ func HelpTemplates() {
 	fmt.Println("\t-r		Recursive verification (-check)")
 
 	fmt.Println()
-	Version.BuyMeCoffee(vault.Reverse(vault.CO3))
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO3))
 }
 
 // Main entry point for handling Template-related commands

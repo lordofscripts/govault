@@ -30,7 +30,7 @@ func HelpTags() {
 	fmt.Println("\t-query 'tag1,tag2...'  Query folders matching tag(s)")
 
 	fmt.Println()
-	Version.BuyMeCoffee(vault.Reverse(vault.CO3))
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO3))
 }
 
 // List Tag Cloud command (-tags)

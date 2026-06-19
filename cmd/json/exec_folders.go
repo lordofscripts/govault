@@ -39,7 +39,7 @@ func HelpCreate() {
 	fmt.Println("\t-overwrite	Overwrite existing .foldermeta.json files")
 
 	fmt.Println()
-	Version.BuyMeCoffee(vault.Reverse(vault.CO3))
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO3))
 }
 
 // Show help about the 'update' command
@@ -50,7 +50,7 @@ func HelpUpdate() {
 	fmt.Println("\t-perm OCTAL  Directory permissions in OCTAL")
 
 	fmt.Println()
-	Version.BuyMeCoffee(vault.Reverse(vault.CO3))
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO3))
 }
 
 // Create folder hieararchy command (-create)
