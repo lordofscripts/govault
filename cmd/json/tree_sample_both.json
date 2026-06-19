@@ -1,0 +1,244 @@
+[
+  {
+    "name": "Documents",
+    "encrypted": false,
+    "tags": "all,document",
+    "children": [
+      {
+        "name": "Admin",
+        "encrypted": false,
+        "tags": "admin, cheat-sheets",
+        "children": [
+          {"name": "Lisbon", "encrypted": false, "template": "%P_%D_*", "tags": "laptop"}
+        ]
+      },
+      {
+        "name": "Archive",
+        "encrypted": false,
+        "tags": "archive",
+        "children": null
+      },
+      {
+        "name": "Development",
+        "encrypted": false,
+        "tags": "develop",
+        "children": null
+      },
+      {
+        "name": "Financial & Taxes",
+        "encrypted": false,
+        "tags": "develop",
+        "template": "%C_%P_%D_%I_*",
+        "children": [
+          {"name": "NL", "encrypted": false, "tags": "NLD, NL, Nederland, Netherlands"},
+          {"name": "US", "encrypted": false, "tags": "USA, US"},
+          {"name": "IT", "encrypted": false, "tags": "ITA, IT, Italia"}
+        ]
+      },
+      {
+        "name": "Medical",
+        "encrypted": true,
+        "tags": "health, medical, laboratory",
+        "template": "%P_%D_%M_%I_*",
+        "children": null
+      },
+      {
+        "name": "Hobbies",
+        "encrypted": false,
+        "tags": "hobby",
+        "children": null
+      },
+      {
+        "name": "Housing & Property",
+        "encrypted": false,
+        "tags": "property, home, land",
+        "children": [
+          {"name": "Utility-Bills", "encrypted": false, "tags": "bills, utility", "template": "%I_%D_*"}
+        ]
+      },
+      {
+        "name": "Insurance",
+        "encrypted": false,
+        "tags": "insurance,car,health",
+        "template": "%P_%D_%I_*",
+        "children": null
+      },      
+      {
+        "name": "Jubilacion",
+        "encrypted": false,
+        "tags": "pension,jubilacion",
+        "children": null
+      },      
+      {
+        "name": "Legal",
+        "encrypted": true,
+        "tags": "legal",
+        "children": [
+          {"name": "Business", "encrypted": false, "tags": "business,coralys"},
+          {"name": "Certificates", "encrypted": false, "tags": "certificates"},
+          {"name": "Citizenship", "encrypted": false, "tags": "foreign,citizenship"}
+        ]
+      },
+      {
+        "name": "Library",
+        "encrypted": false,
+        "tags": "library,reference",
+        "children": null
+      },
+      {
+        "name": "People",
+        "encrypted": false,
+        "tags": "people,me",
+        "children": null
+      },
+      {
+        "name": "Projects & Ideas",
+        "encrypted": false,
+        "tags": "projects, ideas",
+        "children": null
+      },      
+      {
+        "name": "Reports",
+        "encrypted": false,
+        "tags": "reports",
+        "children": null
+      },      
+      {
+        "name": "Templates",
+        "encrypted": false,
+        "tags": "templates, plantillas",
+        "children": null
+      },
+      {
+        "name": "Travel",
+        "encrypted": false,
+        "tags": "travel, holiday, trip",
+        "children": null
+      },
+      {
+        "name": "Vehicle",
+        "encrypted": false,
+        "tags": "vehicle, car",
+        "template": "%V_%D_*",
+        "children": [
+          {"name": "Maintenance", "encrypted": false, "tags": "maintenance"},
+          {"name": "Registration", "encrypted": false, "tags": "property, registration, dmv"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Photos and More",
+    "encrypted": false,
+    "tags": "all,photos",
+    "template": "%A_%D_%T*.%X",
+    "children": [
+      {
+        "name": "Branding",
+        "encrypted": false,
+        "tags": "logo, press, social",
+        "children": [
+          {"name": "Logos", "encrypted": false, "tags": ""}
+        ]
+      },
+      {
+        "name": "Camera",
+        "encrypted": false,
+        "tags": "webcam",
+        "children": null
+      },
+      {
+        "name": "Events & Occasions", 
+        "encrypted": false, 
+        "tags": "payhip,business,income"
+      },
+      {
+        "name": "Genealogy",
+        "encrypted": false,
+        "tags": "family, hobby, genealogy",
+        "children": null
+      },
+      {
+        "name": "Icons",
+        "encrypted": false,
+        "tags": "icons, graphics",
+        "children": null
+      },
+      {
+        "name": "Legal",
+        "encrypted": false,
+        "tags": "legal, documents",
+        "children": null
+      },
+      {
+        "name": "People",
+        "encrypted": false,
+        "tags": "people,portraits",
+        "children": [
+          {"name": "Family", "encrypted": false, "tags": "family,private"}
+        ]
+      },
+      {
+        "name": "Property",
+        "encrypted": false,
+        "tags": "ownership, property, home, house",
+        "children": null
+      },
+      {
+        "name": "Screenshots",
+        "encrypted": false,
+        "tags": "screenshots",
+        "children": null
+      },
+      {
+        "name": "Sites",
+        "encrypted": false,
+        "tags": "websites, projects",
+        "children": [
+          {"name": "PayHip", "encrypted": false, "tags": "payhip,business,income"}
+        ]
+      },
+      {
+        "name": "Templates",
+        "encrypted": false,
+        "tags": "template",
+        "children": null
+      },
+      {
+        "name": "Unclassified",
+        "encrypted": false,
+        "tags": "unclassified",
+        "children": null
+      },
+      {
+        "name": "Wallpapers",
+        "encrypted": false,
+        "tags": "wallpapers",
+        "children": [
+          {"name": "Aviation", "encrypted": false, "tags": "aviation,planes,aircraft,cockpit"},
+          {"name": "Misc", "encrypted": false, "tags": "misc"},
+          {"name": "Nature", "encrypted": false, "tags": "nature"},
+          {"name": "Writing", "encrypted": false, "tags": "writing,mood"}
+        ]
+      },
+      {
+        "name": "Writing",
+        "encrypted": false,
+        "tags": "hobby, writing, novel",
+        "children": [
+          {"name": "Memoirs", "encrypted": false, "tags": "memoirs"}
+        ]
+      },
+      {
+        "name": "XVault",
+        "encrypted": true,
+        "tags": "private,secret",
+        "children": [
+          {"name": "BookCovers", "encrypted": true, "tags": "writing,covers"},
+          {"name": "FlightSim", "encrypted": true, "tags": "games,gaming"}
+        ]
+      }
+    ]
+  }
+]
+

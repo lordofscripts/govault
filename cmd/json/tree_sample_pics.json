@@ -3,7 +3,7 @@
     "name": "Photos",
     "encrypted": false,
     "tags": "all,photos",
-    "template": "IMG_%D_*",
+    "template": "%A_%D_%T*.%X",
     "children": [
       {
         "name": "Branding",

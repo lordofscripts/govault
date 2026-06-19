@@ -28,7 +28,7 @@ PKG_FULL_VERSION=$(shell grep -m 1 'MANUAL_VERSION' version.go | sed -E 's/.*"([
 PKG_PUBLIC_NAME=$(shell grep -m 1 'module' go.mod | sed -E 's/^module\s+//p')
 PKG_NAME=vault
 PKG_REVISION=1
-PKG_VERSION=1.0
+PKG_VERSION=1.1
 PKG_ARCH=amd64
 PKG_FULLNAME=${PKG_NAME}_${PKG_VERSION}-${PKG_REVISION}_${PKG_ARCH}
 PKG_BUILD_DIR=${HOME}/Develop/Distrib/Build/${PKG_NAME}
@@ -39,10 +39,14 @@ BIN_OUT_VAULT=$(GO_PROJ_BIN)/$(EXEC_VAULT)$(EXE_EXT)
 EXEC_VAULT=govault
 MAIN_VAULT=cmd/json/*.go
 
+BIN_OUT_FQL=$(GO_PROJ_BIN)/$(EXEC_FQL)$(EXE_EXT)
+EXEC_FQL=qvault
+MAIN_FQL=cmd/query/*.go
+
 # - Main Targets
 .PHONY: clean build
 
-all: vault
+all: govault qvault
 	
 allwin:
 	GOOS=windows GOARCH=amd64 GOWORK=off $(GO) build $(GO_TAGS) $(GOFLAGS) -o ${BIN_OUT_VAULT}.exe ${MAIN_VAULT}
@@ -61,8 +65,11 @@ proxy:
 
 # - Application Targets
 
-vault:
+govault:
 	GOWORK=off $(GO) build $(GO_TAGS) $(GOFLAGS) -o ${BIN_OUT_VAULT} ${MAIN_VAULT}
+
+qvault:
+	GOWORK=off $(GO) build $(GO_TAGS) $(GOFLAGS) -o ${BIN_OUT_FQL} ${MAIN_FQL}
 
 # - Secondary Targets
 
