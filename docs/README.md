@@ -220,4 +220,4 @@ character or `%` to signify several characters.
 
 ***
 
-Copyright &copy;2025-2026 Lord of Scripts&tm;
+Copyright &copy;2025-2026 Lord of Scripts™ 
