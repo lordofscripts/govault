@@ -10,7 +10,7 @@
  * - govault_pics.json  Directory hierarchy for Pictures folder
  * - govault_docs.json  Directory hierarchy for Documents folder
  *-----------------------------------------------------------------*/
-package main
+package cmd
 
 import (
 	_ "embed"
@@ -50,17 +50,17 @@ var (
 
 // Contains a sample Filename Template configuration file to start with
 //
-//go:embed empty_template.json
+//go:embed json/empty_template.json
 var jsonTemplateData []byte
 
 // Contains a sample Documents tree configuration file to start with
 //
-//go:embed tree_sample_docs.json
+//go:embed json/tree_sample_docs.json
 var jsonDocsData []byte
 
 // Contains a sample Pictures tree configuration file to start with
 //
-//go:embed tree_sample_pics.json
+//go:embed json/tree_sample_pics.json
 var jsonPicsData []byte
 
 /* ----------------------------------------------------------------

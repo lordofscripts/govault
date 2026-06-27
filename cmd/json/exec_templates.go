@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 
 	vault "github.com/lordofscripts/govault"
+	"github.com/lordofscripts/govault/cmd"
 	vfs "github.com/lordofscripts/govault/internal/fs"
 
 	"github.com/lordofscripts/goapp/app"
@@ -60,7 +61,7 @@ func HandleTemplateCommands(action TemplateAction) (err error, exitCode int) {
 	case ListTemplateRules:
 		fallthrough
 	case ListTemplateTokens:
-		err, exitCode = List(VaultConfig.TemplateConfigFile, action)
+		err, exitCode = List(cmd.VaultConfig.TemplateConfigFile, action)
 
 	case CheckFilenames:
 		var cwd string
@@ -72,7 +73,7 @@ func HandleTemplateCommands(action TemplateAction) (err error, exitCode int) {
 		}
 
 		if cwd, err = os.Getwd(); err == nil {
-			NameCheckOnDir(VaultConfig.TemplateConfigFile, cwd, OptRecursive, outputFormatter)
+			NameCheckOnDir(cmd.VaultConfig.TemplateConfigFile, cwd, OptRecursive, outputFormatter)
 		}
 
 	default:

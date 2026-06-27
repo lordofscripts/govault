@@ -100,7 +100,7 @@ func main() {
 	templateCmd.BoolVar(&optTokens, "tokens", false, "Display defined template Tokens")
 	templateCmd.BoolVar(&OptRecursive, "r", false, "Recursive search on folders")
 	templateCmd.BoolVar(&optCheck, "check", false, "Check template conformance on physical tree")
-	templateCmd.StringVar(&jsonPath, "json", GOVAULT_TEMPLATES, "path to JSON folder tree file or app:pics or app:docs")
+	templateCmd.StringVar(&jsonPath, "json", cmd.GOVAULT_TEMPLATES, "path to JSON folder tree file or app:pics or app:docs")
 	templateCmd.BoolVar(&optHelp, "help", false, "Help with options")
 
 	// (1.a.4) Create sub-command
@@ -147,7 +147,7 @@ func main() {
 		// (2.b) pre-process the JSON configuration filename.
 		// app:docs|app:pics|app:templates get converted
 		// pics & docs apply to tags, create & update commands, temps to templates.
-		jsonPath = VaultConfig.ToFilename(jsonPath)
+		jsonPath = cmd.VaultConfig.ToFilename(jsonPath)
 
 		// (2.c) Process sub-command
 		switch subCom.SubCommandName() {
@@ -193,12 +193,12 @@ func main() {
 				}
 
 				if cwd, err = os.Getwd(); err == nil {
-					exitCode, err = NameCheckOnDir(VaultConfig.TemplateConfigFile, cwd, OptRecursive, outputFormatter)
+					exitCode, err = NameCheckOnDir(cmd.VaultConfig.TemplateConfigFile, cwd, OptRecursive, outputFormatter)
 				}
 			case optRules:
-				err, exitCode = List(VaultConfig.TemplateConfigFile, ListTemplateRules)
+				err, exitCode = List(cmd.VaultConfig.TemplateConfigFile, ListTemplateRules)
 			case optTokens:
-				err, exitCode = List(VaultConfig.TemplateConfigFile, ListTemplateTokens)
+				err, exitCode = List(cmd.VaultConfig.TemplateConfigFile, ListTemplateTokens)
 			default:
 				app.Die("template requires [-tokens|-rules|-check]", 5)
 			}
