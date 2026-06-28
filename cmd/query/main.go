@@ -132,6 +132,13 @@ func Help() {
 	fmt.Println("\tqvault -json /Path/To/Config/folders.json -root TopFolder")
 	fmt.Println("\tqvault -json /Path/To/Config/folders.json 'SELECT ...'")
 	fmt.Println("\tqvault -json /Path/To/Config/folders.json 'UPDATE ...'")
+	fmt.Println("\tFields:")
+	fmt.Println("\t\tId, Name, Path, Tags, Template, Encrypted, *")
+	fmt.Println("\tOperators (for WHERE ...):")
+	fmt.Println("\t\t=			Equality")
+	fmt.Println("\t\t!=			Inequality")
+	fmt.Println("\t\tCONTAINS	Field contains a string")
+	fmt.Println("\t\tLIKE		Like operator as in SQL. Wildcards: % and _")
 }
 
 /* ----------------------------------------------------------------
@@ -143,7 +150,7 @@ func main() {
 	var optHelp bool
 	flag.BoolVar(&optHelp, "help", false, "Help me")
 	flag.StringVar(&reqJSON, "json", "", "JSON file with Folder logical hieararchy")
-	flag.StringVar(&optRootNode, "root", "Documents", "Root node name for search start")
+	flag.StringVar(&optRootNode, "root", "Documents", "Root node name for search start (DEMO only)")
 	flag.Usage = Help
 	flag.Parse()
 
@@ -153,7 +160,16 @@ func main() {
 	if optHelp {
 		Help()
 		os.Exit(0)
+	} else if len(reqJSON) == 0 ||
+		(len(optRootNode) == 0 && flag.NArg() == 0) { // -root only for Sample
+		Help()
+		app.Die("Invalid/Missing CLI options", 1)
 	}
+
+	// pre-process the JSON configuration filename.
+	// app:docs|app:pics|app:templates get converted
+	// pics & docs apply to tags, create & update commands, temps to templates.
+	reqJSON = cmd.VaultConfig.ToFilename(reqJSON)
 
 	if flag.NArg() == 0 {
 		SampleRun(reqJSON, optRootNode)
