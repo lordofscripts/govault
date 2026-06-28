@@ -1,3 +1,5 @@
+//go:build ignore
+
 /* -----------------------------------------------------------------
  *              L o r d  O f   S c r i p t s (tm)
  *             Copyright (C)2026 Dídimo Grimaldo T.
@@ -5,6 +7,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * Utility object to handle command-line sub-commands using the
  * standard flag package.
+ * Superseeded by github.com/lordofscripts/goapp/flagx/
  *-----------------------------------------------------------------*/
 package cmd
 
@@ -91,7 +94,7 @@ func (fsc *FlagSubCommander) Parse() error {
 	fsc.chosenSubCommand = ""
 
 	if len(os.Args) < 2 {
-		err = fmt.Errorf("expected sub-commands: %s", fsc.SubCommandNames())
+		err = fmt.Errorf("expected sub-commands: %s", fsc.String())
 		fmt.Fprintln(os.Stderr, err.Error())
 	} else {
 		// retrieve the sub-command from the CLI
@@ -113,7 +116,7 @@ func (fsc *FlagSubCommander) Parse() error {
 }
 
 // Returns the list of defined subcommands. i.e. "foo,bar"
-func (fsc *FlagSubCommander) SubCommandNames() string {
+func (fsc *FlagSubCommander) String() string {
 	var sb strings.Builder
 	count := 0
 	for k := range fsc.subCommands {
@@ -128,14 +131,19 @@ func (fsc *FlagSubCommander) SubCommandNames() string {
 
 // After Parse() without error this method returns the
 // name of the sub-command.
-func (fsc *FlagSubCommander) SubCommandName() string {
+func (fsc *FlagSubCommander) ChosenCommandName() string {
 	return fsc.chosenSubCommand
 }
 
 // After Parse() without error this method returns the
 // flagset corresponding to the selected sub-command.
-func (fsc *FlagSubCommander) SubCommand() *flag.FlagSet {
+func (fsc *FlagSubCommander) ChosenCommand() *flag.FlagSet {
 	return fsc.chosenSet
+}
+
+// Returns the free arguments after the flags of the sub-command.
+func (fsc *FlagSubCommander) FreeArguments() []string {
+	return flag.Args()
 }
 
 /* ----------------------------------------------------------------

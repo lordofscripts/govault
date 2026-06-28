@@ -16,6 +16,7 @@ import (
 	"github.com/lordofscripts/govault/internal/fs"
 
 	"github.com/lordofscripts/goapp/app"
+	"github.com/lordofscripts/goapp/flagx"
 	vault "github.com/lordofscripts/govault"
 )
 
@@ -82,7 +83,7 @@ func main() {
 	var optHelp bool
 
 	// (1.a.2) Tags sub-command
-	subCom := cmd.NewFlagSubCommander()
+	subCom := flagx.NewFlagSubCommander()
 	var optList bool
 	var optQuery string
 	tagsCmd := subCom.Define(CMD_TAGS, flag.ExitOnError)
@@ -138,7 +139,7 @@ func main() {
 
 		// (2.a) -help used on a valid sub-command
 		if optHelp {
-			if flagset := subCom.SubCommand(); flagset != nil {
+			if flagset := subCom.ChosenCommand(); flagset != nil {
 				flagset.Usage()
 			}
 			os.Exit(0)
@@ -150,7 +151,7 @@ func main() {
 		jsonPath = cmd.VaultConfig.ToFilename(jsonPath)
 
 		// (2.c) Process sub-command
-		switch subCom.SubCommandName() {
+		switch subCom.ChosenCommandName() {
 		case CMD_TAGS:
 			// $govault tags [-list|-query 'TAGS']
 			if len(jsonPath) == 0 {
