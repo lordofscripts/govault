@@ -50,6 +50,8 @@ all: govault qvault
 	
 allwin:
 	GOOS=windows GOARCH=amd64 GOWORK=off $(GO) build $(GO_TAGS) $(GOFLAGS) -o ${BIN_OUT_VAULT}.exe ${MAIN_VAULT}
+	GOOS=windows GOARCH=amd64 GOWORK=off $(GO) build $(GO_TAGS) $(GOFLAGS) -o ${BIN_OUT_FQL}.exe ${MAIN_FQL}
+	cd bin && zip ${PKG_FULLNAME}.zip *.exe
 
 android:
 	GOOS=android GOARCH=arm64 GOWORK=off $(GO) build $(GO_TAGS) $(GOFLAGS) -o ${BIN_OUT_VAULT} ${MAIN_VAULT}
