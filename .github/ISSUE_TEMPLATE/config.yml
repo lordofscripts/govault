@@ -1,0 +1,6 @@
+# I can see that for some issues we'll need that
+blank_issues_enabled: false
+contact_links:
+  - name: Discuss Your Feature Ideas (on GitHub Discussions)
+    url: https://github.com/lordofscripts/govault/discussions
+    about: Before actually requesting a new feature, make sure to discuss it with fellow users first.
