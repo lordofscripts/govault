@@ -11,6 +11,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/lordofscripts/govault/cmd"
 	"github.com/lordofscripts/govault/internal/fs"
@@ -43,7 +44,21 @@ func Help() {
 	flag.PrintDefaults()
 	fmt.Println()
 
+	HelpCreate()
+	HelpUpdate()
+	HelpTags()
+	HelpTemplates()
+
 	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO2))
+}
+
+func HelpList() {
+	fmt.Println(os.Args[0], " sync -json PATH")
+	fmt.Println("Option:")
+	fmt.Println("\t-json string           The path to JSON config or app:docs/app:pics")
+	fmt.Println()
+
+	vault.ModuleVersion.BuyMeCoffee(vault.Reverse(vault.CO3))
 }
 
 /* ----------------------------------------------------------------
@@ -59,21 +74,26 @@ func main() {
 		--------------	------------------		 ---------------------
 		-help			*						 Help
 		-v				*						 Verbose output
+		-json string	*						 Path to JSON config file or app:docs,app:pics,app:templates
 		-list			tags					 Display Tag cloud
 		-query string	tags					 Query folder tree for CSV tags
 		-tokens			template				 Display Tag cloud
 		-rules			template				 Query folder tree for CSV tags
 		-r				template				 Recursive
 		-check			template				 Template conformance of physical tree
-		-root string	create 					 Physical path root
+		-root string	create,update			 Physical path root
 		-overwrite		create					 Overwite .foldermeta.json
-		-perm octal		create			 		 Directory permissions
+		-perm octal		create,update	 		 Directory permissions
+		-virtual		sync					 Update configuration from Real filesystem
+		-system			sync					 Update Real filesystem from configuration
 	*/
 	const (
 		CMD_TAGS     string = "tags"
 		CMD_TEMPLATE string = "template"
 		CMD_CREATE   string = "create"
 		CMD_UPDATE   string = "update"
+		CMD_SYNC     string = "sync"
+		CMD_LIST     string = "list"
 		CMD_HELP     string = "help"
 	)
 
@@ -123,12 +143,28 @@ func main() {
 	updateCmd.StringVar(&jsonPath, "json", "", "path to JSON folder tree file or app:pics or app:docs")
 	updateCmd.BoolVar(&optHelp, "help", false, "Help with options")
 
-	// (1.a.6) Help sub-command
+	// (1.a.6) Sync sub-command
+	var optSyncVirtual, optSyncSystem, optDryRun bool
+	syncCmd := subCom.Define(CMD_SYNC, flag.ExitOnError)
+	syncCmd.Usage = HelpSync
+	syncCmd.StringVar(&jsonPath, "json", "", "path to JSON folder tree file or app:pics or app:docs")
+	syncCmd.BoolVar(&optSyncSystem, "system", false, "update filesystem to match config (Right sync)")
+	syncCmd.BoolVar(&optSyncVirtual, "virtual", false, "update configuration to match filesystem (Left sync)")
+	syncCmd.BoolVar(&optDryRun, "dry", false, "Dry-run, only lists actions without altering filesystem")
+	syncCmd.StringVar(&optRoot, "root", ".", "Root path to examine")
+
+	// (1.a.7) List sub-command
+	listCmd := subCom.Define(CMD_LIST, flag.ExitOnError)
+	listCmd.Usage = HelpList
+	listCmd.StringVar(&jsonPath, "json", "", "path to JSON folder tree file or app:pics or app:docs")
+
+	// (1.a.8) Help sub-command
 	helpCmd := subCom.Define(CMD_HELP, flag.ExitOnError)
 	helpCmd.Usage = Help
 
 	// II. Application Prelude
 	vault.ModuleVersion.Copyright(vault.Reverse(vault.CO1), vault.CHR_TRIDENT)
+	fmt.Println("\t", strings.Repeat("⎍⎍", 26)) // ⍽⍽
 	fmt.Println()
 
 	if err := subCom.Parse(); err != nil {
@@ -226,10 +262,61 @@ func main() {
 			folders, err = fs.LoadFolderTable(jsonPath)
 			err = Update(folders, optPerm, optRoot)
 
+		case CMD_LIST:
+			// $govault list -json PATH
+			if len(jsonPath) == 0 {
+				err = ErrNoJsonPicsDocs
+				exitCode = 1
+				break
+			}
+			// the "virtual" hieararchy is always a reference
+			var foldersV []fs.Folder
+			if foldersV, err = fs.LoadFolderTable(jsonPath); err == nil {
+				const SHOW_DEPTH bool = true
+				fs.DumpVirtual(foldersV, SHOW_DEPTH)
+			}
+			os.Exit(0)
+
+		case CMD_SYNC:
+			// $govault sync -json PATH [-virtual|-system]
+			if len(jsonPath) == 0 {
+				err = ErrNoJsonPicsDocs
+				exitCode = 1
+				break
+			}
+			// the "virtual" hieararchy is always a reference
+			var foldersV []fs.Folder
+			if foldersV, err = fs.LoadFolderTable(jsonPath); err == nil {
+				var cwd string
+				if optRoot == "" || optRoot == "." {
+					if cwd, err = os.Getwd(); err != nil {
+						break
+					}
+				} else {
+					cwd = optRoot
+				}
+
+				if !optDryRun {
+					optDryRun = !cmd.AskConfirmation("Dangerous Filesystem Operations!!!")
+				}
+
+				if err == nil {
+					const DRYRUN bool = true
+					const SHOW_OPERATION bool = true
+					fmt.Println("Using  : ", cwd)
+					fmt.Printf("Dry-run: %t\n", optDryRun)
+					if optSyncSystem {
+						err = SynchronizeReal(foldersV, cwd, optDryRun, SHOW_OPERATION)
+					} else if optSyncVirtual {
+						err = SynchronizeVirtual(foldersV, cwd, optDryRun, SHOW_OPERATION, jsonPath)
+					}
+				}
+			}
+
 		case CMD_HELP:
-			// $govault help {tags|template|create|update}
+			// $govault help {tags|template|create|update|sync|list}
 			if len(helpCmd.Args()) != 1 || !subCom.IsValidSubcommand(helpCmd.Arg(0)) {
-				fmt.Printf("Usage:\n\t%s help {tags|template|create|update}\n", os.Args[0])
+				fmt.Printf("Usage:\n\t%s help {tags|template|create|update|sync|list}\n", os.Args[0])
 				os.Exit(1)
 			} else {
 				switch helpCmd.Arg(0) {
@@ -241,6 +328,10 @@ func main() {
 					HelpTags()
 				case CMD_TEMPLATE:
 					HelpTemplates()
+				case CMD_SYNC:
+					HelpSync()
+				case CMD_LIST:
+					HelpList()
 				}
 				os.Exit(0)
 			}

@@ -35,6 +35,7 @@ func HelpCreate() {
 	fmt.Println(os.Args[0], " create [-perm OCTAL]")
 	fmt.Println("Option:")
 	fmt.Println("\t-root PATH	Directories will be created at PATH")
+	fmt.Println("\t-json PATH	Path to the JSON file with Virtual structure")
 	fmt.Println("\t-perm OCTAL  Directory permissions in OCTAL")
 	fmt.Println("\t-overwrite	Overwrite existing .foldermeta.json files")
 
@@ -47,6 +48,7 @@ func HelpUpdate() {
 	fmt.Println(os.Args[0], " update [-perm OCTAL]")
 	fmt.Println("Option:")
 	fmt.Println("\t-root PATH	Directories will be created at PATH")
+	fmt.Println("\t-json PATH	Path to the JSON file with Virtual structure")
 	fmt.Println("\t-perm OCTAL  Directory permissions in OCTAL")
 
 	fmt.Println()
@@ -89,33 +91,6 @@ func Update(folders []vfs.Folder, permStr, rootDir string) error {
 /* ----------------------------------------------------------------
  *                       I N T E R N A L
  *-----------------------------------------------------------------*/
-
-/* @audit TODO
-func seekVirtualFolder(fromPath string) (vfs.Folder, error) {
-	// (a) Redirect to built-in configuration
-	if strings.EqualFold(fromPath, GOVAULT_PICS) {
-		fromPath = VaultConfig.PicturesTreeFile
-	} else if strings.EqualFold(fromPath, GOVAULT_DOCS) {
-		fromPath = VaultConfig.DocumentsTreeFile
-	} else if len(fromPath) == 0 {
-		return nil, fmt.Errorf("need -json option, please use -help")
-	}
-
-	// (b) Read reference metadata from govault_pics.json OR govault_docs.json
-	data, err := os.ReadFile(fromPath)
-	if err != nil {
-		return nil, fmt.Errorf("error reading JSON: %v\n", err)
-	}
-
-	// (c) Deserialization into a model
-	var folders []vfs.Folder
-	if err = json.Unmarshal(data, &folders); err != nil {
-		return nil, fmt.Errorf("error parsing JSON: %v\n", err)
-	}
-
-	// (d) Create virtual tree
-}
-*/
 
 // Recursive creation of vault's directory/folder structure
 func createFolderHierarchy(root string, f vfs.Folder, dirMode fs.FileMode, overwrite, update bool) error {
