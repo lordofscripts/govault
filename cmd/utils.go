@@ -7,7 +7,12 @@
  *-----------------------------------------------------------------*/
 package cmd
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strings"
+	"time"
+)
 
 /* ----------------------------------------------------------------
  *                       G L O B A L S
@@ -75,6 +80,11 @@ type AnsiCode string
 // Reset the terminal
 func Reset() {
 	fmt.Print("\033[39m\\033[49m")
+}
+
+// Reset the terminal
+func ResetColor() {
+	fmt.Print(ansi_COLOR_RESET)
 }
 
 // clear the screen and move cursor to (0,0)
@@ -151,4 +161,53 @@ func BrightCyan(args ...any) {
 
 func BrightWhite(args ...any) {
 	Color(ansi_BRIGHT_WHITE, args...)
+}
+
+// timer returns a function that prints the name argument and
+// the elapsed time between the call to timer and the call to
+// the returned function. The returned function is intended to
+// be used in a defer statement:
+//
+//	defer DurationTimer("sum")()
+func DurationTimer(name string) func() {
+	start := time.Now()
+	return func() {
+		fmt.Fprintf(os.Stderr, "*** %s took %v\n", name, time.Since(start))
+	}
+}
+
+// Returns the duration d as a string HH:MM:SS.mmmm
+func FormatDuration(d time.Duration) string {
+	if d < 0 {
+		d = -d
+	}
+	ms := d.Milliseconds() // total milliseconds
+	h := ms / (3600 * 1000)
+	ms %= 3600 * 1000
+	m := ms / (60 * 1000)
+	ms %= 60 * 1000
+	s := ms / 1000
+	ms %= 1000
+	return fmt.Sprintf("%02d:%02d:%02d.%03d", h, m, s, ms)
+}
+
+// Asks for a Y/YES/SI N/NO confirmation for important operations.
+// An optional message msg can be printed before the question.
+func AskConfirmation(msg string) bool {
+	//const WARN_ICON rune = rune(0x26A0FE0F) // ⚠️ warning icon with variation (yellow) selection
+	//const CONSTRUCTION_ICON rune = rune(0x1F6A7) // 🚧
+	var s string
+	fmt.Println(strings.Repeat("?", 40))
+	if len(msg) != 0 {
+		fmt.Println("⚠️ 🚧", msg, "🚧 ⚠️")
+	}
+	fmt.Print("❓ Are you sure? (y/n): ")
+	fmt.Scanln(&s)
+	s = strings.TrimSpace(s)
+	s = strings.ToLower(s)
+
+	if s == "y" || s == "yes" || s == "si" || s == "ja" {
+		return true
+	}
+	return false
 }
