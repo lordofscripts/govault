@@ -1,0 +1,92 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Help",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "args": ["help"]
+        },
+        {
+            "name": "Help Create",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "args": ["help", "create"]
+        },        
+        {
+            "name": "Template check Recursive",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "args": ["template", "-check", "-r"],
+            "cwd": "${env:HOME}/Pictures/Wallpapers"
+        },
+        {
+            "name": "FQLX Select 1",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceRoot}/cmd/query/",
+            "args": ["-json", "app:docs", "SELECT Id,Name,Path,Template FROM Documents WHERE Tags LIKE '%car%'"]
+        },
+        {
+            "name": "FQLX Select 2",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceRoot}/cmd/query/",
+            "args": ["-json", "app:docs", "SELECT Id,Name,Path,Template FROM Documents WHERE Tags CONTAINS 'car'"]
+        },                
+        {
+            "name": "FQLX Demo",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceRoot}/cmd/query/",
+            "args": ["-json", "${workspaceRoot}/cmd/json/tree_sample_both.json", "-root", "Documents"]
+        },
+        {
+            "name": "Sync System (Docs)",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "console": "integratedTerminal",
+            "program": "${workspaceRoot}/cmd/json/",
+            "args": ["sync", "-dry", "-json", "app:docs", "-root", "${env:HOME}", "-system"]
+        },  
+        {
+            "name": "Sync Virtual (Docs)",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "console": "integratedTerminal",
+            "program": "${workspaceRoot}/cmd/json/",
+            "args": ["sync", "-dry", "-json", "app:docs", "-root", "${env:HOME}", "-virtual"]
+        },
+        {
+            "name": "Sync Virtual (Test)",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "console": "integratedTerminal",
+            "program": "${workspaceRoot}/cmd/json/",
+            "args": ["sync", "-dry", "-json", "${workspaceRoot}/tests/test_dirs/test_docs.json", "-root", "${workspaceRoot}/tests/test_dirs", "-virtual"]
+        },                        
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "args": ["tags", "-list", "-json", "${env:HOME}/go/go-vault/tree.json"]
+        }
+    ]
+}
