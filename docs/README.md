@@ -106,6 +106,11 @@ that you are expected to customize to suit your Document/Image/Other Repository.
 Read the manual, there is plenty of info here and the source code is documented in the 
 [Pkg Info](https://pkg.go.dev/github.com/lordofscripts/govault).
 
+There are two applications delivered with GoVault. You can learn how to use
+them reading their documentation separately:
+
+* [GoVault](./GO_VAULT.md) is the main executable.
+* [QVault](./GO_QVAULT.md) is an SQL-like query utility for advanced GoVault users.
 
 ***
 Copyright &copy;2025-2026 Lord of Scripts™ 
