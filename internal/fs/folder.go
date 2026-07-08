@@ -18,6 +18,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path"
 	"regexp"
 	"strconv"
 	"strings"
@@ -251,6 +252,19 @@ func LoadFolderTable(fromPath string) ([]Folder, error) {
 	return folders, nil
 }
 
+// Writes a []Folder slice to a JSON file.
+func SaveFolderTable(folders []Folder, toPath string) error {
+	RenumberFolders(folders)
+	RecalculateAllPaths(folders)
+
+	if bytes, err := json.MarshalIndent(folders, "", "  "); err == nil {
+		err = os.WriteFile(toPath, bytes, 0755)
+		return err
+	} else {
+		return err
+	}
+}
+
 // 				((( Folder.Id Recalculation )))
 
 // RenumberFolders resets and populates the Id field for a slice of folders
@@ -406,4 +420,22 @@ func SearchCustom(folders []Folder, predicate func(Folder) bool) []*Folder {
 
 	walk(folders)
 	return matches
+}
+
+//				((( Utility )))
+
+// Dump a []Folder as an indented hiearchical tree
+func DumpVirtual(virtualFS []Folder, showLevel bool) {
+	for _, f := range virtualFS {
+		prefixRepeat := strings.Count(f.Id, ".")
+		prefix := strings.Repeat("    ", prefixRepeat)
+		if showLevel {
+			fmt.Printf("%03d %s%s\n", prefixRepeat, prefix, path.Base(f.Path))
+		} else {
+			fmt.Println(prefix, path.Base(f.Path))
+		}
+		if len(f.Children) > 0 {
+			DumpVirtual(f.Children, showLevel)
+		}
+	}
 }
