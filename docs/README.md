@@ -21,6 +21,12 @@ Once you decide on a structure, you copy the sample JSON file and modify it to s
 needs. After that simply use the `-create` switch and in a second everything is created!
 No need to manually create a hiearchy and then do the same elsewhere (or copy a ZIP).
 
+### Limitation of Liability Disclaimer
+
+This software and all software in my GitHub repositories is provided **AS-IS**. You
+acknowledge that the use of some features of this software, may lead to *data loss*.
+You can see the [LICENSE](../LICENSE) file in this repository.
+
 ### Features:
 
 * Works for `Documents` and `Pictures` folders, but you decide how to name them.
