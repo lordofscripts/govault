@@ -92,132 +92,20 @@ On **Windows** you have the `govault.exe` and `qvault.exe` executable files.
 
 ### Usage
 
-First copy either of [Documents](../cmd/json/tree_sample_docs.json) or [Pictures](../cmd/json/tree_sample_pics.json)
-to a customized file `tree.json`. Each of those has a single top JSON node, but you can
-merge them into one do maintain both Pictures and Documents with a single specification file.
-Ensure you [validate your JSON](https://jsonlint.com/) `tree.json` file before using it with
-`govault`.
-
-> `$govault {COMMAND} [OPTIONS]`
-
-Where `COMMAND` can be any of the following:
-
-* `-help` to get usage help
-* `-create` create a directory hiearchy of Pictures or Documents
-* `-update` update directory hiearchy and folder metadata after you edited your reference JSON folder file.
-* `-query` to query your tag cloud and suggest you where to deposit the file.
-* `-list tokens|rules` (Filename template feature) list the *tokens* or *rules* defined in your JSON filenames templates files.
-
-Options depend on the command but are any of:
+These are some command-line flags you should familiarize yourself with
+in order to use `govault` and `qvault` safely. I repeat, I am NOT liable
+for any data loss! Also familiarize yourself with the configuration files
+that you are expected to customize to suit your Document/Image/Other Repository.
 
 * `-json FILE_PATH` your JSON file path. For using built-in configuration (which you can customize) you can use `FILE_PATH` set as `app:pics` or `app:docs` to point to the config files you edited.
-* `-overwrite` overwrite existing folder metadata on creation. *Does not apply to* `-update`
+* `-overwrite` overwrite existing folder metadata on `create` subcommand. *Does not apply to* `update` subcommand.
 * `-perm "PERM_VALUE"` folder permissions, defaults to `0755` or `rwxr-xr-x`
-* `-root DIRECTORY` root directory for folder creation, defaults to `.` (current)
+* `-root DIRECTORY` root directory for folder creation, defaults to `.` (current) which would
+  typically be your HOME directory. The root nodes of your JSON files are relative to THIS path.
 
 Read the manual, there is plenty of info here and the source code is documented in the 
 [Pkg Info](https://pkg.go.dev/github.com/lordofscripts/govault).
 
-#### Folder Hierarchy Commands
-
-These commands or options are related to the upkeeping of the Documents, Pictures or
-whatever directory hiearchy.
-
-To Create the entire directory hierarchy (all options above apply):
-
-> `$govault -create`
-
-To Update the directory hierarchy and folder metadata after you update your JSON file
-(all options from above apply, *except* `-overwrite` which is TRUE):
-
-> `$govault -update`
-
-To List all the *tags* you have mentioned in your JSON file and show you a tag cloud:
-
-> `$govault -tags`
-
-To Query your JSON file to suggest you where to store or find a file given one or more
-tags:
-
-> `$govault -query "TAG(S)"`
-
-For the `-query` you can specify a single tag or multiple comma-separated tags.
-
-#### Filename Template Commands
-
-Usually the pictures from your devices have a specific filename that follows a
-pattern like `IMG_20261025_230015.jpg`. Or perhaps you want (recommended!) to
-organize your *Digital Legacy* with well-formed names that identify owners,
-institutions, categories or whatever.
-
-For that, as of `goVault v1.1.0` you can specify filename templates in your
-*directory hiearchy* JSON files. The `govault_pics.json` and `govault_docs.json`
-files in your configuration directory are a good start, feel free to customize
-them to your own hierarchy.
-
-The templates you *optionally* specify in the two config files just mentioned
-could look like `IMG_%D_%T*.%X` (example for images) so that you can validate 
-compliance of your filenames with the suggested template. This highly flexible 
-system uses **Tokens** that you define in the `govault_templates.json` 
-configuration file. There you define Predefined tokens as a list of  *key-value* 
-pairs (valid name and description), a list of values (`IMG|PIC|DCIM`) or
-even *Regular Expression* Rules for more complex variations. You can examine
-a [sample template](../cmd/json/empty_template.json). I have found this
-very valuable for both my Document and Picture vaults where my family (or survivors)
-can quickly identify the relevance of files. Obviously, very helpful for me
-as well.
-
-Get a list of Tokens in your `govault_templates.json` file.
-
-> `$govault -list tokens`
-
-Get a list of Rules in your `govault_templates.json` file. These are for more
-complex filename patterns.
-
-> `$govault -list rules`
-
-Use the templates from the local `.foldermeta.json` referencing the
-tokens and rules from your `govault_templates.json` file to verify compliance
-of the filenames in the *current directory*.
-
-> `$govault -check`
-
-## QVault
-
-This is an auxillary executable that allows the user to do free-form
-SQL-like queries on the command line. It uses your logical folder structure
-which is contained in one or more configuration files. This logical structure
-is reflected on the physical file system.
-
-![QVault](./assets/qvault_query_sample.png)
-
-At this moment it has full `SELECT` support and partial `UPDATE` support. The
-update is not completed because it needs to be persisted.
-
-Here are some examples of FQL (Folder Query Language) statements:
-
-* `SELECT Name,Path FROM Pictures WHERE Encrypted = true`
-* `SELECT Id,Name,Path FROM Documents WHERE Path LIKE 'Documents/Legal/%'`
-* `SELECT Name,Tags FROM Pictures WHERE * LIKE '%Project%'`
-* `SELECT * FROM Documents WHERE Name LIKE '%Munich%'`
-* `UPDATE folders SET Name = 'Archived' WHERE Id = '1.2'`
-* `UPDATE folders SET Encrypted = false, Tags = 'public' WHERE Name = 'Public Docs'`
-
-In the `SELECT` clause you can use any of the `Folder` field names: `Id, Name, Path, Tags, Template` or the `*` character to select *all* fields.
-
-The `FROM` clause indicates the name of the *top root node* as specified in your
-source JSON file that contains the File Directory Structure that is replicated on
-the physical file system. You can have one file for Documents and another for 
-Pictures or both together, so there is no limitation of the number of top root nodes.
-The logical structure is hiearchical, as in a tree.
-
-The `WHERE` clause has built-in operators like `=`, `CONTAINS` and `LIKE`. The 1st
-argument in the `WHERE` clause is the field to examine, or you can use `*` to specify
-that it look at `Name, Path, Id, Tags` for the match. 
-
-The `LIKE` operator works like in SQL, so you can use `_` to signify a single
-character or `%` to signify several characters.
 
 ***
-
 Copyright &copy;2025-2026 Lord of Scripts™ 
