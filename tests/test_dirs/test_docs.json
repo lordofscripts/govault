@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Documentos",
+        "encrypted": false,
+        "tags": "all,document",
+        "children": [
+            {
+                "name": "One",
+                "encrypted": false,
+                "tags": "uno",
+                "children": [
+                    {
+                        "name": "B",
+                        "encrypted": false,
+                        "tags": "b",
+                        "children": [
+                            {
+                                "name": "C",
+                                "encrypted": false,
+                                "tags": "c",
+                                "children": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Two",
+                "encrypted": false,
+                "tags": "dos",
+                "children": [
+                    {
+                        "name": "A",
+                        "encrypted": false,
+                        "tags": "a",
+                        "children": null
+                    }
+                ]
+            }
+        ]
+    }
+]
