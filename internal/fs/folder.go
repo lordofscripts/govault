@@ -63,7 +63,7 @@ type Folder struct {
 
 // Directory metadata that is stored in the .foldermeta.json file
 // found in each directory
-type Meta struct {
+type FolderMeta struct {
 	Encrypted bool     `json:"encrypted,omitempty"` // whether it is supposedly encrypted
 	Tags      []string `json:"tags"`                // category tags
 	Template  string   `json:"template,omitempty"`  // suggested filename template
@@ -73,8 +73,8 @@ type Meta struct {
  *                    C O N S T R U C T O R S
  *-----------------------------------------------------------------*/
 
-func NewMeta(tags []string, encrypted bool, nameFormat string) Meta {
-	return Meta{
+func NewMeta(tags []string, encrypted bool, nameFormat string) FolderMeta {
+	return FolderMeta{
 		Encrypted: encrypted,
 		Tags:      tags,
 		Template:  nameFormat,
@@ -206,7 +206,7 @@ func (f *Folder) summarizeTags(tagCloud map[string]int, tags string) {
 //				((( JSON Functions )))
 
 // Serialize folder metadata to filename.
-func SerializeFolderMeta(metadata Meta, filename string) error {
+func SerializeFolderMeta(metadata FolderMeta, filename string) error {
 	if dataBin, err := json.MarshalIndent(metadata, "", "  "); err == nil {
 		if err = os.WriteFile(filename, dataBin, 0644); err != nil {
 			return fmt.Errorf("write meta %s: %w", filename, err)
@@ -219,8 +219,8 @@ func SerializeFolderMeta(metadata Meta, filename string) error {
 }
 
 // Deserialize folder metadata from filename.
-func DeserializeFolderMeta(filename string) (*Meta, error) {
-	var metadata Meta
+func DeserializeFolderMeta(filename string) (*FolderMeta, error) {
+	var metadata FolderMeta
 	if dataBin, err := os.ReadFile(filename); err == nil {
 		if err = json.Unmarshal(dataBin, &metadata); err != nil {
 			return nil, err

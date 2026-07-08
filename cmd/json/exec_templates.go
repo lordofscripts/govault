@@ -209,7 +209,7 @@ func NameCheckOnDir(cfgFilename, directory string, isRecursive bool, formatterCB
 		}
 
 		// (c) process .foldermeta.json
-		var folderMeta *vfs.Meta
+		var folderMeta *vfs.FolderMeta
 		if folderMeta, err = vfs.DeserializeFolderMeta(metaFilename); err != nil {
 			w := app.NewWarning(WarnIgnoredFile, "NameCheck deserialize error %v\n", err)
 			//fmt.Fprintf(os.Stderr, "NameCheck deserialize error %v\n", err)
