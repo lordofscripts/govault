@@ -116,3 +116,29 @@ func GoVersionMin(min string) (string, bool) {
 	ok := current >= min
 	return current, ok
 }
+
+/*
+  This commented part is used by the Makefile target that extracts it
+  to a temporary file, compiles it and uses it to print out the full
+  Module Version that includes attributes like Alpha,Beta,RC which the
+  plain old "make version" didn't
+
+//>>>BEGIN Versioner
+package main
+
+import (
+    "os"
+    "fmt"
+    "strings"
+    "github.com/lordofscripts/govault"
+)
+
+func main() {
+    if len(os.Args) == 2 && strings.EqualFold(os.Args[1], "short") {
+        fmt.Println(vault.ModuleVersion.Short())
+    } else {
+        fmt.Println(vault.ModuleVersion)
+    }
+}
+//>>>END Versioner
+*/

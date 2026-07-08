@@ -24,7 +24,9 @@ mkfile_dir := $(dir $(mkfile_path))
 GO_PROJ_BIN=${mkfile_dir}bin
 
 # - Packagers only
-PKG_FULL_VERSION=$(shell grep -m 1 'MANUAL_VERSION' version.go | sed -E 's/.*"([^"]+)".*/\1/')
+PKG_SEMANTIC_VERSION=$(shell sed -n '/>>>BEGIN/,/>>>END/p' version.go > /tmp/mainversion_gv.go && go run /tmp/mainversion_gv.go short)
+#PKG_FULL_VERSION=$(shell grep -m 1 'MANUAL_VERSION' version.go | sed -E 's/.*"([^"]+)".*/\1/')
+PKG_FULL_VERSION:= $(patsubst v%,%,$(PKG_SEMANTIC_VERSION))
 PKG_PUBLIC_NAME=$(shell grep -m 1 'module' go.mod | sed -E 's/^module\s+//p')
 PKG_NAME=vault
 PKG_REVISION=1
@@ -103,7 +105,7 @@ help:
 	@echo  "\tupdate - Update all 3rd party GO package dependencies"
 	@echo  "\tlint - Run GO Lint"
 	@echo "· Package Building"
-	@echo  "\tdebian - Build the Debian (${PKG_FULLNAME}-${PKG_REVISION}.deb) package"
+	@echo  "\tdebian - Build the Debian (${PKG_FULL_VERSION}.deb) package"
 	@echo  "\trpm - Build the RPM (${PKG_FULLNAME}.rpm) package"
 	@echo  "\trpmclean - Cleans the RPM build area"
 
