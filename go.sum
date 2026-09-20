@@ -1,5 +1,7 @@
 github.com/lordofscripts/goapp v1.4.3-RC.1 h1:jebz9E15BQC8yX+YPgYhBCJW0h/Hc9f/4Mcvq1gKlew=
 github.com/lordofscripts/goapp v1.4.3-RC.1/go.mod h1:Hxl+fTLzQ5Q7NkDfWNObwKCe+pkPs47UDj64vv1Q4gY=
+github.com/lordofscripts/goapp v1.5.1 h1:UcAu04YrwT1NVNvcGrJ1WP9in7NvckvrglzS7eTMX0A=
+github.com/lordofscripts/goapp v1.5.1/go.mod h1:z+mkws5OuUBYI/Wr8eEN4W4Y5GyjCaWwa/S3RqsyjvU=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
